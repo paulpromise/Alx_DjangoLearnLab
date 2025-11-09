@@ -3,10 +3,20 @@ from .views import LibraryDetailView
 from . import views
 from .views import list_books
 
+from django.contrib.auth.views import LoginView, LogoutView
+from .views import LibraryDetailView, list_books
+
 urlpatterns = [
-    path("books/", views.list_books, name="book_list"),
+    path("books/", list_books, name="book_list"),
     path("library/<int:pk>/", LibraryDetailView.as_view(), name="library_detail"),
-    path("login/", views.login_view, name="login"),
-    path("logout/", views.logout_view, name="logout"),
-    path("register/", views.register_view, name="register"),
+    path(
+        "login/",
+        LoginView.as_view(template_name="relationship_app/login.html"),
+        name="login",
+    ),
+    path(
+        "logout/",
+        LogoutView.as_view(template_name="relationship_app/logout.html"),
+        name="logout",
+    ),
 ]
