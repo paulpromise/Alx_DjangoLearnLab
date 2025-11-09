@@ -27,17 +27,14 @@ class LibraryDetailView(DetailView):
         context["books"] = self.object.books.all()
         return context
 
+
 # User registration view
-class RegisterView(CreateView):
-    template_name = "relationship_app/register.html"
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login")
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        return response
+def register(request):
+    return HttpResponse()
+
 
 def login_view(request):
-    return HttpResponse("Login view placeholder")
+    return HttpResponse()
 
 def logout_view(request):
-    return HttpResponse("Logout view placeholder")
+    return HttpResponse()
