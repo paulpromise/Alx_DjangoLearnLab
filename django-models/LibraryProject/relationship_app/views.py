@@ -5,7 +5,7 @@ from . import Book
 from .models import Library
 
 
-def book_list(request):
+def list_books(request):
     """
     A simple view that renders a template listing all books and their authors.
     """
