@@ -30,11 +30,12 @@ class LibraryDetailView(DetailView):
 
 # User registration view
 def register(request):
-    return HttpResponse()
+    form = UserCreationForm()
+    return render(request, "relationship_app/register.html", {"form": form})
 
 
 def login_view(request):
-    return HttpResponse()
+    return render(request, "relationship_app/login.html")
 
 def logout_view(request):
-    return HttpResponse()
+    return render(request, "relationship_app/logout.html")
