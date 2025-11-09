@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from . import Book
 from .models import Library
-
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 def list_books(request):
     """
@@ -23,3 +25,18 @@ class LibraryDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["books"] = self.object.books.all()
         return context
+
+# User registration view
+class RegisterView(CreateView):
+    template_name = "relationship_app/register.html"
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        return response
+    
+def login_view(request):
+    return HttpResponse("Login view placeholder")
+
+def logout_view(request):
+    return HttpResponse("Logout view placeholder")
