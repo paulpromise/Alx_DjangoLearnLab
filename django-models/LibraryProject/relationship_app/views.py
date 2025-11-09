@@ -1,19 +1,15 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import DetailView
 from relationship_app.models import Book, Library
 
 
 def book_list(request):
     """
-    A simple view that returns a plain-text list of all books and their authors.
+    A simple view that renders a template listing all books and their authors.
     """
     books = Book.objects.all()
-
-    if not books.exists():
-        return HttpResponse("No books found.", content_type="text/plain")
-
-    output = "\n".join([f"{book.title} — {book.author.name}" for book in books])
-    return HttpResponse(output, content_type="text/plain")
+    return render(request, "relationship_app/list_books.html", {"books": books})
 
 
 # Class-based view — show library details and its books
