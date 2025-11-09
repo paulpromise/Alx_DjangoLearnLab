@@ -4,11 +4,7 @@ from relationship_app.models import Book, Library
 
 
 def book_list(request):
-    """
-    A simple view that returns a plain-text list of all books and their authors.
-    """
     books = Book.objects.all()
-
     if not books.exists():
         return HttpResponse("No books found.", content_type="text/plain")
 
@@ -19,7 +15,7 @@ def book_list(request):
 # Class-based view — show library details and its books
 class LibraryDetailView(DetailView):
     model = Library
-    template_name = "relationship_app/list_books.html"  # ✅ change this
+    template_name = "relationship_app/library_detail.html"
     context_object_name = "library"
 
     def get_context_data(self, **kwargs):
