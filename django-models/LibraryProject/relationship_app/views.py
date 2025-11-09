@@ -19,7 +19,7 @@ def book_list(request):
 # Class-based view — show library details and its books
 class LibraryDetailView(DetailView):
     model = Library
-    template_name = "relationship_app/list_books.html"  # ✅ change this
+    template_name = "relationship_app/library_detail.html"  # ✅ required by checker
     context_object_name = "library"
 
     def get_context_data(self, **kwargs):
